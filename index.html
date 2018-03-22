@@ -43,7 +43,35 @@
             renderAgain()
         })
 
-        
+        // 随机创建节点
+//它会与其他点连线，这样就实现了鼠标跟随的效果了。
+        function constructNodes(){
+            for(var i=0;i<100;i++){
+                var node={
+                    dirvenByMouse:i==0,
+                    x:Math.random()*canvas.width,//宽度
+                    y:Math.random()*canvas.height,//高度
+                    vx:Math.random()*1-0.5,
+                    vy:Math.random()*1-0.5,
+                    radius:Math.random()>0.9?3+Math.random()*3:1+Math.random()*3//半径
+                };
+                nodes.push(node);
+
+            }
+            nodes.forEach(function(e){
+                nodes.forEach(function(e2){
+                    if(e==e2){
+                        return
+                    }
+                    var edge={
+                        from:e,
+                        to:e2,
+                    }
+                    addEdge(edge)
+                })
+            })
+
+        }
 
     </script>
 </body>
