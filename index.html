@@ -29,6 +29,19 @@
         //新建存储星星和 边的变量
 
         var node=[], edges=[];
+        
+        // 如果画布大小变化，需要重绘
+        function renderAgain(){
+            canvas.width=document.body.clientWidth;
+            canvas.height=canvas.clientHeight;
+            if(nodes.length==0){
+                constructNodes()//这里是创建节点
+            }
+            render()//绘制节点
+        }
+        document.addEventListener("resize",function(){
+            renderAgain()
+        })
 
         
 
